@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nowrap {
+    white-space: nowrap;
+}
+
+@layer components {
+    body {
+        @apply font-normal;
+    }
+
+    .select-input {
+        @apply bg-white border border-gray-200 rounded text-primary shadow-white focus:ring-0 focus:outline-none focus:border-0;
+    }
+
+    .status {
+        @apply px-2 py-1 text-xs capitalize bg-white border rounded-full;
+    }
+
+    .z-60 {
+        z-index: 60;
+    }
+
+    a.active {
+        @apply font-medium text-white shadow-sm bg-primary;
+    }
+
+    .active {
+        @apply bg-primary;
+    }
+
+    .alert-success {
+        @apply text-green-500 border-green-600;
+    }
+
+    .alert-error {
+        @apply text-red-500 border-red-600;
+    }
+
+    label {
+        @apply text-gray-500;
+    }
+
+    .btn {
+        @apply px-4 py-2 font-medium border rounded-lg;
+    }
+
+    .btn-sm {
+        @apply px-2 py-1 text-sm font-medium border rounded-lg;
+    }
+
+    .btn-lg {
+        @apply px-8 py-4 text-xl font-medium border rounded-lg;
+    }
+
+    .submit,
+    .submit-primary {
+        @apply btn;
+    }
+
+    .btn-primary,
+    .submit-primary {
+        @apply text-white bg-primary border-primary;
+    }
+
+    .btn-primary:hover {
+        @apply font-medium bg-white text-primary;
+    }
+
+    .btn-secondary,
+    .submit-secondary {
+        @apply text-white bg-secondary border-secondary;
+    }
+
+    .btn-secondary:hover {
+        @apply font-medium bg-white text-secondary;
+    }
+
+    .btn-primary-outline {
+        @apply bg-white text-primary border-primary;
+    }
+
+    .btn-primary-outline:hover {
+        @apply font-medium text-white bg-primary;
+    }
+
+    .btn-secondary-outline {
+        @apply bg-white text-secondary border-secondary;
+    }
+
+    .btn-secondary-outline:hover {
+        @apply text-white bg-secondary;
+    }
+
+    .tt {
+        @apply transition duration-500 transform;
+    }
+}
