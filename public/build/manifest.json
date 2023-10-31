@@ -1,0 +1,38 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-f3b4d8d8.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-dbda1af7.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/template.js": {
+    "file": "assets/template-c1053013.js",
+    "isEntry": true,
+    "src": "resources/js/template.js"
+  },
+  "resources/scss/main.scss": {
+    "file": "assets/main-4f7c5b72.css",
+    "isEntry": true,
+    "src": "resources/scss/main.scss"
+  },
+  "resources/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-003f1154.ttf",
+    "src": "resources/webfonts/fa-brands-400.ttf"
+  },
+  "resources/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-faae6fc0.woff2",
+    "src": "resources/webfonts/fa-brands-400.woff2"
+  },
+  "resources/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-cea79b34.ttf",
+    "src": "resources/webfonts/fa-solid-900.ttf"
+  },
+  "resources/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-886c8611.woff2",
+    "src": "resources/webfonts/fa-solid-900.woff2"
+  }
+}
