@@ -130,18 +130,13 @@ function userNameAbbr($pre): string
 
 function getUsersIdsByRole($val): array
 {
-    $ids = \App\Models\User::select('id')->where('current_role_id', $val)->pluck('id')->toArray();
-    return $ids;
-}
-function getUsersParkIdsByRole($val): array
-{
-    $ids = \App\Models\User::select('park_id')->where('current_role_id', $val)->pluck('park_id')->toArray();
+    $ids = \App\Models\User::select('id')->where('current_role', $val)->pluck('id')->toArray();
     return $ids;
 }
 
 function getUsersByRole($val): array | object
 {
-    $users = \App\Models\User::select('id', 'name')->where('current_role_id', $val)->get();
+    $users = \App\Models\User::select('id', 'name')->where('current_role', $val)->get();
     return $users;
 }
 

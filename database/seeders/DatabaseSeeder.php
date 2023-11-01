@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             AllocationSeeder::class,
             RegistrationPortalSeeder::class,
             ConversationSeeder::class,
+            MessageSeeder::class,
         ]);
         // User::create([
         //     'firstname' => "Adeoluwa",

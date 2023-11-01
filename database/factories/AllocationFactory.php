@@ -20,7 +20,7 @@ class AllocationFactory extends Factory
         $departments = Department::select("name")->take(random_int(1, 4))->pluck("name")->toArray();
         return [
             'course_id' => random_int(1, 10),
-            'lecturer_id' => getUsersIdsByRole(5)[array_rand(getUsersIdsByRole(5))],
+            'lecturer_id' => getUsersIdsByRole("lecturer")[array_rand(getUsersIdsByRole("lecturer"))],
             'departments' => json_encode($departments),
         ];
     }

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Conversation;
-use App\Models\Message;
 use Illuminate\Database\Seeder;
 
 class ConversationSeeder extends Seeder
@@ -18,7 +17,7 @@ class ConversationSeeder extends Seeder
                 "user_one" => $key,
                 "user_two" => $value,
             ]);
-            $chat->messages()->save(factory(Message::class)->make());
+            $chat->messages()->create(['text' => fake()->sentence(random_int(1, 25))]);
         }
     }
 }

@@ -59,12 +59,12 @@ class FacultySeeder extends Seeder
         );
 
         foreach ($faculties as $name => $facul) {
-            $faculty = Faculty::create(['name' => $name, 'dean' => getUsersByRole(3)[array_rand(getUsersByRole(3))]]);
+            $faculty = Faculty::create(['name' => $name, 'dean' => getUsersIdsByRole("dean")[array_rand(getUsersIdsByRole("dean"))]]);
             foreach ($facul as $department) {
                 $faculty->departments()->create([
                     'name' => $department,
                     'description' => fake()->sentence(2),
-                    'hod' => getUsersByRole(4)[array_rand(getUsersByRole(4))]
+                    'hod' => getUsersIdsByRole("hod")[array_rand(getUsersIdsByRole("hod"))]
                 ]);
             }
         }
