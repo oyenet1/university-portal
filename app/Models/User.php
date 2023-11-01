@@ -55,6 +55,11 @@ class User extends Authenticatable implements LaratrustUser
         $query->where('firstname', 'like', "%{$term}%")
             ->orWhere('surname', 'like', "%{$term}%")
             ->orWhere('email', 'like', "%{$term}%");
-            // $query->where('current_role', 'admin');
+        // $query->where('current_role', 'admin');
+    }
+
+    function faculty(): HasOne
+    {
+        return $this->hasOne(Faculty::class);
     }
 }

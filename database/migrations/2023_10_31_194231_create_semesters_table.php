@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,12 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('semesters', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->unique()->constrained()->cascadeOnDelete();
-            $table->date('dob')->nullable();
-            $table->string('gender')->nullable();
-            $table->unsignedBigInteger('language_id')->nullable();
+            $table->string('name')->unique();
+            $table->foreignId('year_id')->constrained('academic_sessions')->cascadeOnDelete();
+            $table->date('start')->nullable();
+            $table->date('end')->nullable();
+            $table->SoftDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +26,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('profiles');
+        //$table->dropSoftDeletes();
+        Schema::dropIfExists('semesters');
+
     }
 };

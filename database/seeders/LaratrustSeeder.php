@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class LaratrustSeeder extends Seeder
 {
@@ -34,7 +34,7 @@ class LaratrustSeeder extends Seeder
             $role = \App\Models\Role::firstOrCreate([
                 'name' => $key,
                 'display_name' => ucwords(str_replace('_', ' ', $key)),
-                'description' => ucwords(str_replace('_', ' ', $key))
+                'description' => ucwords(str_replace('_', ' ', $key)),
             ]);
             $permissions = [];
 
@@ -64,12 +64,13 @@ class LaratrustSeeder extends Seeder
                 $this->command->info("Creating '{$key}' user");
                 // Create default user for each role
                 $user = \App\Models\User::create([
-                    'surname' => fake()->lastName(),
-                    'firstname' => fake()->firstName(),
+                    'last_name' => fake()->lastName(),
+                    'first_name' => fake()->firstName(),
+                    'title' => fake()->title(),
                     'phone' => fake()->phoneNumber(),
                     'current_role' => $key,
                     'email' => $key . '@binters.com',
-                    'password' => bcrypt('password')
+                    'password' => bcrypt('password'),
                 ]);
                 // $user->addRole($role);
             }

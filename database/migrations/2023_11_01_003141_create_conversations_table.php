@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Province;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('conversations', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Province::class)->constrained()->cascadeOnDelete();
-            $table->string('name');
-            $table->string('slug')->nullable();
+            $table->foreignId('user_one')->constrained('users')->cacacdeOnDelete();
+            $table->foreignId('user_two')->constrained('users')->cacacdeOnDelete();
             $table->SoftDeletes();
             $table->timestamps();
         });
@@ -28,6 +26,7 @@ return new class extends Migration
     public function down(): void
     {
         //$table->dropSoftDeletes();
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('conversations');
+
     }
 };

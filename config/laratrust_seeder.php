@@ -31,10 +31,16 @@ return [
             'users' => 'c,r,u,d',
             'profile' => 'r,u',
         ],
-        'vendor' => [
+        'dean' => [
             'profile' => 'r,u',
         ],
-        'customer' => [
+        'hod' => [
+            'profile' => 'r,u',
+        ],
+        'lecturer' => [
+            'profile' => 'r,u',
+        ],
+        'student' => [
             'profile' => 'r,u',
         ],
     ],

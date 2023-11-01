@@ -8,7 +8,6 @@ function currentUser()
     return auth()->user();
 }
 
-
 function getCountries()
 {
     $countries = Http::get('https://restcountries.com/v3.1/all?fields=name,idd,flags,currencies,capital');
@@ -20,8 +19,7 @@ function redirectback()
     return redirect()->back();
 }
 
-
-function currentUserPermissions(): array|null
+function currentUserPermissions(): array | null
 {
     $permissions = \App\Models\Permission::select('name')
         ->whereRelation('roles', 'name', auth()->user()->current_role)
@@ -30,7 +28,6 @@ function currentUserPermissions(): array|null
         ->toArray();
     return $permissions;
 }
-
 
 function statusColor($status)
 {
@@ -110,20 +107,24 @@ function nigeriaState(): array
         "Taraba",
         "Yobe",
         "Zamfara",
-        "Federal Capital Territory"
+        "Federal Capital Territory",
     ];
 }
 
 function userNameAbbr($pre): string
 {
-    if ($pre == 1) {
+    if ($pre == "superadmin") {
         return "SAD";
-    } else if ($pre == 2) {
+    } else if ($pre == "admin") {
         return "ADM";
-    } else if ($pre == 3) {
-        return "AGT";
+    } else if ($pre == "dean") {
+        return "DEAN";
+    } else if ($pre == "hod") {
+        return "HOD";
+    } else if ($pre == "lecturer") {
+        return "LEC";
     } else {
-        return "DRI";
+        return "STU";
     }
 }
 
@@ -138,7 +139,7 @@ function getUsersParkIdsByRole($val): array
     return $ids;
 }
 
-function getUsersByRole($val): array|object
+function getUsersByRole($val): array | object
 {
     $users = \App\Models\User::select('id', 'name')->where('current_role_id', $val)->get();
     return $users;
@@ -171,7 +172,7 @@ function cities(): array
             "ISIALA NGWA SOUTH",
             "OHAFIA",
             "UMUAHIA",
-            "UMUDIKE"
+            "UMUDIKE",
         ],
         "adamawa" => [
             "GOMBI",
@@ -218,7 +219,7 @@ function cities(): array
             "UYO - SHELTER AFRIQUE EXTENSION",
             "UYO - UDO UDOMA",
             "UYO - UNIUYO PERMANENT SITE",
-            "UYO - UNIUYO TOWN CAMPUS"
+            "UYO - UNIUYO TOWN CAMPUS",
         ],
         "anambra" => [
             "ABAGANA",
@@ -254,7 +255,7 @@ function cities(): array
             "ONITSHA - CENTRAL LO",
             "CATIONSONITSHA - GRA",
             "OYI",
-            "UMUOKPE / AWKA"
+            "UMUOKPE / AWKA",
         ],
         "bauchi" => [
             "ALKALERI",
@@ -273,7 +274,7 @@ function cities(): array
             "RAILWAY / FED LOW COST",
             "WUNTI",
             "YAN DOKA",
-            "YELWA / FED POLY"
+            "YELWA / FED POLY",
         ],
         "bayelsa" => [
             "AMASSOMA",
@@ -287,7 +288,7 @@ function cities(): array
             "SAGBAMA",
             "SOUTHERN IJAW",
             "WILBERFORCE ISLAND",
-            "YENAGOA"
+            "YENAGOA",
         ],
         "benue" => [
             "GBOKO",
@@ -311,11 +312,11 @@ function cities(): array
             "OTUKPO",
             "OTUKPA",
             "VANDEKYA",
-            "YANDEV"
+            "YANDEV",
         ],
         "borno" => [
             "MAIDUGURI",
-            "MONGUNO"
+            "MONGUNO",
         ],
         "cross-river" => [
             "ABI",
@@ -335,7 +336,7 @@ function cities(): array
             "ODUKPANI",
             "OGOJA",
             "YAKUUR",
-            "YALA"
+            "YALA",
         ],
         "delta" => [
             "WARRI - DECO ROAD",
@@ -462,7 +463,7 @@ function cities(): array
             "WARRI - P.T.I",
             "WARRI - REFINERY ROAD",
             "WARRI - UBEJI",
-            "WARRI - UGWUANGWE"
+            "WARRI - UGWUANGWE",
         ],
         "ebonyi" => [
             "ABAKALIKI",
@@ -476,7 +477,7 @@ function cities(): array
             "IZZI",
             "OHAOZARA",
             "OHAUKWU",
-            "ONICHA"
+            "ONICHA",
         ],
         "edo" => [
             "AKOKO EDO",
@@ -607,7 +608,7 @@ function cities(): array
             "UGBOWO - UWASOTA",
             "UGBOWO - UWELU",
             "UHEN",
-            "UROMI"
+            "UROMI",
         ],
         "ekiti" => [
             "ADO EKITI",
@@ -631,7 +632,7 @@ function cities(): array
             "MOBA",
             "OMUO",
             "OTUN",
-            "OYE"
+            "OYE",
         ],
         "enugu" => [
             "AGBANI",
@@ -656,7 +657,7 @@ function cities(): array
             "OJI RIVER",
             "UDENU",
             "UDI",
-            "UZO - UWANI"
+            "UZO - UWANI",
         ],
         "federal-capital-terirrtory" => [
             "ABAJI",
@@ -782,7 +783,7 @@ function cities(): array
             "MPAPE",
             "NICON JUNCTION",
             "TUNGAN MAJE",
-            "ZUBA"
+            "ZUBA",
         ],
         "gombe" => [
             "AKKO",
@@ -812,7 +813,7 @@ function cities(): array
             "STATE LOW COST",
             "TUDUN WADA",
             "TUNFERE",
-            "YAMALTU / DEBA"
+            "YAMALTU / DEBA",
         ],
         "imo" => [
             "AMAKOHIA - AKWAKUMA",
@@ -837,7 +838,7 @@ function cities(): array
             "OWERRI - PORT HARCOURT ROAD",
             "OWERRI - UMUNGUMA",
             "OWERRI - WETHERAL",
-            "OWERRI - WORLD BANK"
+            "OWERRI - WORLD BANK",
         ],
         "jigawa" => [
             "DUTSE",
@@ -847,7 +848,7 @@ function cities(): array
             "JAHUM",
             "JAHUN",
             "KAZAURE",
-            "RINGIM"
+            "RINGIM",
         ],
         "kaduna" => [
             "AIRPORT",
@@ -884,7 +885,7 @@ function cities(): array
             "STATION ROUNDABOUT",
             "TRIKANIA",
             "TUNDU WADA",
-            "ZARIA"
+            "ZARIA",
         ],
         "kano" => [
             "AIRFORCE BASE / AIRPORT ROAD",
@@ -922,16 +923,16 @@ function cities(): array
             "WUDIL",
             "YANKABA / HADEJIA ROAD",
             "ZARIA ROAD / NA'IBAWA",
-            "ZOO ROAD"
+            "ZOO ROAD",
         ],
         "katsina" => [
             "KATSINA TOWN",
-            "KANO ROAD"
+            "KANO ROAD",
         ],
         "kebbi" => [
             "AMBRUSA",
             "ARGUNGU",
-            "BIRNIN KEBBI"
+            "BIRNIN KEBBI",
         ],
         "kogi" => [
             "ABOBO",
@@ -949,7 +950,7 @@ function cities(): array
             "MAMMY MARKET",
             "OBAJANA",
             "OKENNE",
-            "ZANGO"
+            "ZANGO",
         ],
         "kwara" => [
             "ASA",
@@ -974,7 +975,7 @@ function cities(): array
             "OFFA",
             "OKE ERO",
             "OYUN",
-            "PATEGI"
+            "PATEGI",
         ],
         "lagos" => [
             "Abule Egba (Agbado Ijaye Road)",
@@ -1289,7 +1290,7 @@ function cities(): array
             "Yaba - Oyingbo",
             "Yaba - Tejuosho",
             "Yaba - University Road",
-            "Yaba - YabaTech"
+            "Yaba - YabaTech",
         ],
         "nasarawa" => [
             "AKWANGA",
@@ -1313,7 +1314,7 @@ function cities(): array
             "NEW KARU",
             "OBI",
             "TOTO",
-            "WAMBA"
+            "WAMBA",
         ],
         "niger" => [
             "AGAI",
@@ -1354,7 +1355,7 @@ function cities(): array
             "SULEJA - KWANKASHE",
             "SULEJA - MAJE",
             "SULEJA - RAFINSANYI",
-            "ZUBA"
+            "ZUBA",
         ],
         "ogun" => [
             "ABEOKUTA - ADIGBE",
@@ -1429,7 +1430,7 @@ function cities(): array
             "SANGO OTTA - SANGO",
             "SANGO OTTA - TOLL GATE",
             "YEWA NORTH",
-            "YEWA SOUTH"
+            "YEWA SOUTH",
         ],
         "ondo" => [
             "AKOKO",
@@ -1469,7 +1470,7 @@ function cities(): array
             "ONDO TOWN - AYEYEMI",
             "ORE",
             "OSE",
-            "OWO"
+            "OWO",
         ],
         "osun" => [
             "ARAKEJI",
@@ -1530,7 +1531,7 @@ function cities(): array
             "OSOGBO - ORISUNMIBARE",
             "OSOGBO - OTA - EFUN",
             "OSOGBO - POWERLINE",
-            "OSOGBO - RING ROAD"
+            "OSOGBO - RING ROAD",
         ],
         "oyo" => [
             "AFIJIO",
@@ -1603,7 +1604,7 @@ function cities(): array
             "OYO TOWN - OROKI",
             "OYO TOWN - SAKI",
             "SAGBE",
-            "SURULERE"
+            "SURULERE",
         ],
         "plateau" => [
             "AHMADU BELLO WAY",
@@ -1633,7 +1634,7 @@ function cities(): array
             "ZARIA ROAD",
             "ZARMAGANDA",
             "ZAWAN",
-            "ZAWAN / BUKURU"
+            "ZAWAN / BUKURU",
         ],
         "rivers" => [
             "ABHONEMA",
@@ -1755,26 +1756,26 @@ function cities(): array
             "PORT HARCOURT - WOJI KYC",
             "PORT HARCOURT - WOJI ELIJIJI",
             "RUMUAGHOLU",
-            "RUMUODUOMAYA"
+            "RUMUODUOMAYA",
         ],
         "sokoto" => [
             "SOKOTO TOWN",
             "SOKOTO TOWN CENTRAL LOCATIONS",
             "SOKOTO - CENTRAL LOCATION",
-            "SOKOTO / GUSAU"
+            "SOKOTO / GUSAU",
         ],
         "taraba" => [
             "JALINGO TOWN",
-            "YOLA ROAD"
+            "YOLA ROAD",
         ],
         "yobe" => [
             "BADE",
             "FIKA",
             "GASHUA",
             "GEIDAM",
-            "NGURU"
+            "NGURU",
         ],
-        "zamfara" => ["ZAMFARA TOWN"]
+        "zamfara" => ["ZAMFARA TOWN"],
     );
 }
 

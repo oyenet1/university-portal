@@ -3,17 +3,15 @@
 namespace App\Observers;
 
 use App\Models\User;
-use Illuminate\Support\Str;
-use App\Notifications\WelcomeNotification;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
-use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
 
 class UserObserver
 {
     function creating(User $user): void
     {
         $user->phone = Str::startsWith($user->phone, '0') ? Str::replaceFirst('0', '', $user->phone) : $user->phone;
-        $user->uci = IdGenerator::generate(['table' => 'users', 'field' => 'uci', 'length' => 12, 'reset_on_prefix_change' => true, 'prefix' => 'NG' . date('y')]);
+        $user->school_id = IdGenerator::generate(['table' => 'users', 'field' => 'school_id', 'length' => 12, 'reset_on_prefix_change' => true, 'prefix' => date('y') . userNameAbbr($user->current_role)]);
     }
     function created(User $user): void
     {

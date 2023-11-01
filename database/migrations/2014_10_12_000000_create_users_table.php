@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\City;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -13,18 +13,16 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('firstname');
-            $table->string('surname');
-            $table->string('uci')->unique();
-            $table->foreignIdFor(City::class)->nullable()->constrained()->nullOnDelete();
+            $table->string('title')->nullable();
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('school_id')->unique();
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->boolean('notify_email')->default(false);
+            $table->boolean('notify_email')->default(true);
             $table->boolean('notify_sms')->default(false);
             $table->string('otp')->nullable();
             $table->string('current_role')->nullable()->default('customer');
-            $table->foreignId('parent_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->text('kyc')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('avatar')->nullable();

@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Allocation;
 use Illuminate\Database\Seeder;
 
-class ProfileSeeder extends Seeder
+class AllocationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        //
+        Allocation::factory(11)->create();
     }
 }

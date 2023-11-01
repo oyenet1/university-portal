@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class City extends Model
+class Program extends Model
 {
-    use HasFactory, SoftDeletes, HasSlug;
+    use HasFactory, SoftDeletes;
     protected $guarded = [];
     protected $casts = [
         'created_at' => 'datetime',
@@ -17,10 +17,8 @@ class City extends Model
         'deleted_at' => 'datetime',
     ];
 
-
-    static function boot()
+    function years(): HasMany
     {
-        parent::boot();
-        self::creating(fn ($state) => $state->slug($state, $state->state));
+        return $this->hasMany(AcademicSession::class);
     }
 }

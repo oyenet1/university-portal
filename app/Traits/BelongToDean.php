@@ -5,10 +5,10 @@ namespace App\Traits;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-trait BelongToUser
+trait BelongToDean
 {
-    public function user(): BelongsTo
+    public function dean(): BelongsTo
     {
-        return $this->belongTo(User::class);
+        return $this->belongTo(User::class, 'dean');
     }
 }
